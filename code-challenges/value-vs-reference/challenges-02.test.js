@@ -89,7 +89,9 @@ console.log(a) prints [1, 2, 3, 4]
 
 const append = (arr1, arr2) => {
   // Solution code here...
-
+  arr2.forEach(function(element){
+    arr1.push(element);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,12 +144,12 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should append the second array to the first', () => {
-//     const a = [1, 2, 3, 4];
-//     const b = [5, 6, 7, 8];
-//     append(a, b);
+describe('Testing challenge 5', () => {
+  test('It should append the second array to the first', () => {
+    const a = [1, 2, 3, 4];
+    const b = [5, 6, 7, 8];
+    append(a, b);
 
-//     expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-//   });
-// });
+    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+});
