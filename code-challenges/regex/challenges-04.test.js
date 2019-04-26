@@ -13,7 +13,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let reg = /[0-9]/;
+  return reg.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,7 +26,16 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let reg = /\b[A-Z]\B/;
+  let capitalArray =[];
+  let splitString = str.split(' ');
+
+  for(let i=0; i< splitString.length; i++){
+    if(reg.test(splitString[i])){
+      capitalArray.push(splitString[i].replace(/[^\w\s]/gi, ''));
+    }
+  }
+  return capitalArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +45,15 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let cityArray = [];
+  let reg = /\b^[A-J]+/;
+
+  for(let i =0; i<arr.length; i++){
+    if(reg.test(arr[i])){
+      cityArray.push(arr[i]);
+    }
+  }
+  return cityArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +69,9 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+
+  let regex = /^[Oo]ct(ober)?$/;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +85,15 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  let reg = /\w[^\w\s]$/;
+  let wordArray = [];
+  let splitString = str.split(' ');
+  for (let i = 0 ; i<splitString.length; i++){
+    if (!reg.test(splitString[i])){
+      wordArray.push(splitString[i]+ ' ');
+    }
+  }
+  return wordArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,6 +110,9 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  let reg = /[AEIOUaeiou]/g;
+  
+  return str.replace(reg, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,6 +129,16 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 
 const findShells = (str) => {
   // Solution code here...
+  let reg = /(ells)[.]?$/;
+  let seaArray = [];
+  let splitString = str.split(' ');
+
+  for(let i=0; i< splitString.length; i++){
+    if(reg.test(splitString[i])){
+      seaArray.push(splitString[i].replace(/[^\w\s]/gi, ''));
+    }
+  }
+  return seaArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
