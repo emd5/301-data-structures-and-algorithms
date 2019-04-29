@@ -229,8 +229,10 @@ const extractVowels = (str) => {
 
   let vowelArray = str.replace(vowels, '').split('');
   vowelArray.sort((a,b) => a.localeCompare(b)).toString();
+  const vowelString = vowelArray.join('');
+
   results.push(str.replace(constants,''));
-  results.push(str.replace(vowelArray,''));
+  results.push(vowelString);
 
   return results;
 
