@@ -26,6 +26,7 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
+  // let reg = /b[A-Z][\w']*\b/g; || []
   let reg = /\b[A-Z]\B/;
   let capitalArray =[];
   let splitString = str.split(' ');
@@ -85,6 +86,7 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
+  
   let reg = /\w[^\w\s]$/;
   let wordArray = [];
   let splitString = str.split(' ');
@@ -130,6 +132,7 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 const findShells = (str) => {
   // Solution code here...
   let reg = /(ells)[.]?$/;
+  
   let seaArray = [];
   let splitString = str.split(' ');
 
