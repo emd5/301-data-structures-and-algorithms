@@ -235,7 +235,6 @@ const extractVowels = (str) => {
   results.push(vowelString);
 
   return results;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
