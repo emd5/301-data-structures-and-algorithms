@@ -135,7 +135,7 @@ Write a function named totalCharacters that takes in an array and returns the nu
 const totalCharacters = (arr) => {
   let ans = 0;
 
-  for(let i =0; i < arr.name.length; i++){
+  for(let i =0; i < arr.length; i++){
     ans++;
     for(let item of Object.entries(arr[i])){
       if(item[0] === 'spouse' && item[1]){
@@ -144,6 +144,7 @@ const totalCharacters = (arr) => {
       } else if( item[0] === 'children'){
         ans+= item[1].length;
       }
+    }
   }
   return ans;
 };
