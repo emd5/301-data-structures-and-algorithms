@@ -133,7 +133,27 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
+  let count = 0;
+
+  for(let i =0; i < arr[0].name.length; i++){
+    if(Object.entries(arr[i].name)){
+      count ++;
+    }
+  }
   
+  for(let i in arr[0].spouse){
+    if(arr[i].spouse !== null){
+      count ++;
+    }
+  }
+
+  for (let i in arr[0].children){
+    count += arr[i].children.length;
+  }
+
+  return count;
+  //this displays the list of children
+  // Object.entries(arr[0].children)
 };
 
 /* ------------------------------------------------------------------------------------------------
