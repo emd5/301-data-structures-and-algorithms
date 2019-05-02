@@ -19,3 +19,4 @@ Liz Mahoney
   - [string methods](.code-challenges/string-methods)
   - [object keys, values, entries](.code-challenges/object)
   - [map](.code-challenges/map)
+  - [filter](.code-challenges/filter)
