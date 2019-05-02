@@ -268,13 +268,13 @@ describe('Testing challenge 6', () => {
   });
 });
 
-// describe('Testing challenge 7', () => {
-//   test('It should remove non-integers and return "even" or "odd', () => {
-//     expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
-//     expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
-//     expect(evenOddNumericValues(['a', 'b', 'c'])).toStrictEqual([]);
-//   });
-//   test('It should not accept strings that look like numbers', () => {
-//     expect(evenOddNumericValues(['1', 2, 3, '4', 5,'6'])).toStrictEqual(['even', 'odd', 'odd']);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should remove non-integers and return "even" or "odd', () => {
+    expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
+    expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
+    expect(evenOddNumericValues(['a', 'b', 'c'])).toStrictEqual([]);
+  });
+  test('It should not accept strings that look like numbers', () => {
+    expect(evenOddNumericValues(['1', 2, 3, '4', 5,'6'])).toStrictEqual(['even', 'odd', 'odd']);
+  });
+});
