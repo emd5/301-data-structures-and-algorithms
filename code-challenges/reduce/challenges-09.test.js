@@ -69,9 +69,10 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  let names =  arr.reduce((ansSoFar, currentValue, index) =>{
-    return currentValue.name}
-  );
+  let names =  arr.reduce((ansSoFar, currentValue, index)=> {
+    ansSoFar.push(currentValue.name);
+    return ansSoFar;
+  },[]);
 
   return names;
 };
@@ -85,7 +86,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (arr) => {
-  // Solution code here...
+  let string = arr.split('');
+  let reversedString = string.reduce((ansSoFar, currentValue) => {
+    return currentValue + ansSoFar;
+  },'');
+  return reversedString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,7 +143,7 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return arr.reduce((accumulator, currentValue) => currentValue.children ? accumulator + currentValue.children.length : accumulator, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,7 +155,13 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let average = arr.reduce((accumulator, currentValue, index) => {
+    accumulator.sum += currentValue;
+    accumulator.count++;
+    return accumulator;
+  }, {count:0, sum: 0})
+  const averageValue = average.sum/average.count;
+  return averageValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,9 +181,9 @@ const isPrime = (value) => {
   return value > 1;
 };
 
-const countPrimeNumbers = (arr) => {
-  // Solution code here...
-};
+const countPrimeNumbers = (arr) => arr.reduce( (accumulator, currentValue) => isPrime(currentValue) ? accumulator + 1 : accumulator, 0);
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -254,29 +265,29 @@ describe('Testing challenge 2', () => {
   });
 });
 
-// describe('Testing challenge 3', () => {
-//   test('It should return the string with the characters in reverse order', () => {
-//     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
-//   });
-// });
+describe('Testing challenge 3', () => {
+  test('It should return the string with the characters in reverse order', () => {
+    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return the total number of children', () => {
-//     expect(countNumberOfChildren(characters)).toStrictEqual(14);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return the total number of children', () => {
+    expect(countNumberOfChildren(characters)).toStrictEqual(14);
+  });
+});
 
-// describe('Testing challenge 5', () => {
-//   test('It should return the average of the numbers in the array', () => {
-//     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should return the average of the numbers in the array', () => {
+    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should return a count of the prime numbers in the array', () => {
-//     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return a count of the prime numbers in the array', () => {
+    expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should return any stats that match the input', () => {
