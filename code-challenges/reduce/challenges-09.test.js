@@ -225,7 +225,7 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -238,9 +238,9 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
-const extractChildren = (arr) => {
-  // Solution code here...
-};
+
+const extractChildren = (arr) => arr.filter(x => x.name.includes('a')).reduce( (ansSoFar, currentObject) => currentObject.children ? ansSoFar.concat(currentObject.children) : ansSoFar, []);
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -254,7 +254,7 @@ Run your tests from the console: jest challenges-09.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return the length of the array', () => {
-    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
+    expect(countNumberOfElements([8, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
@@ -295,9 +295,9 @@ describe('Testing challenge 6', () => {
 //   });
 // });
 
-// describe('Testing challenge 8', () => {
-//   test('It should return an array containing the names of the children', () => {
-//     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
-//     expect(extractChildren(characters).length).toStrictEqual(10);
-//   });
-// });
+describe('Testing challenge 8', () => {
+  test('It should return an array containing the names of the children', () => {
+    expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
+    expect(extractChildren(characters).length).toStrictEqual(10);
+  });
+});
