@@ -10,7 +10,7 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   const reg = /[0-9]/;
-  if(reg.test(pin) && pin.length === 4){
+  if(reg.test(pin) && pin.toString().length === 4){
     return true;
   } else{
     return false;
@@ -34,7 +34,9 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  const reg = /^\w+.?\w+@\S+[.][a-zA-Z]{3}$/;
+  return reg.test(email);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +61,9 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+  const reg = /^(\(\d{3}\)\s?|\d{3}(-|\s)?)\d{3}(-|\s)?\d{4}$/;
+  return reg.test(phoneNumber);
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,7 +76,9 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  // Solution code here...
+  const reg = /<\s*a[^>]*>(.*?)<\s*\/\s*a>/g;
+
+  return elements.filter( element => reg.test(element));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +89,7 @@ All the code below will verify that your functions are working to solve the chal
 DO NOT CHANGE any of the below code.
 
 Run your tests from the console: jest solutions-11.test.js
+
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
