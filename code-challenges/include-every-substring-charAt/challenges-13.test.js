@@ -71,7 +71,7 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  return arr.filter(element => element.includes(target) === false);
+  return arr.filter(element => element.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  return arr.every((element, index, array) => element.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,7 +97,18 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
-  // Solution code here...
+  const outer = [];
+  for( let i=0; i< arr.length ; i++){
+    const inner = [];
+    for(let j=0; j< arr[i].length; j++){
+      if( !arr[i][j].includes('Brook') ){
+        console.log(arr[i][j]);
+        inner.push(arr[i][j]);
+      }
+    }
+    outer.push(inner);
+  }
+  return outer;
 };
 
 /* ------------------------------------------------------------------------------------------------
