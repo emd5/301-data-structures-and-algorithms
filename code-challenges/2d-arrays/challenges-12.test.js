@@ -23,8 +23,19 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
 
+  let totalPerHour = new Array(12).fill(0);
+
+  for( let i=0; i<= stores.length-1; i++){
+
+    for( let j=0 ; j<= stores[i].length-1 ; j++){
+
+      let value = stores[i][j];
+      totalPerHour[j] += value;
+    }
+
+  }
+  return totalPerHour;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,7 +49,15 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let salesArray = [];
+  for(let i = 0; i< hours.length ; i++){
+    salesArray.push({
+      'sales': data[i] + ' cookies',
+      'time': hours[i]
+    })
+  }
+
+  return salesArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +79,13 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  for( let i =0; i<arr.length ; i++){
+    for(let j=0; j<arr[i].items.length; j++){
+      if(arr[i].items[j].name === 'Treats'){
+        return arr[i].items[j].quantity
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +107,11 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if(board[row][col] === '#'){
+    return 'hit';
+  } else{
+    return 'miss';
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,7 +123,8 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  return numbers.reduce((product, curVal) => product * curVal.reduce((curProd, val) => curProd * val, 1), 1);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,7 +144,14 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  // Solution code here...
+  let result = {sum:0, count:0};
+  for(let i=0; i < weather.length; i++){
+    for(let j=0; j < weather[i].length; j++){
+      result.sum += weather[i][j];
+      result.count += 1;
+    }
+  }
+  return result.sum/result.count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +172,15 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+  let lowestAverage = Number.MAX_VALUE;
+  for(let i=0; i< weather.length ; i++){
+    let value = 0;
+    for(let j=0; j< weather[i].length;j++){
+      value += weather[i][j];
+    }
+    lowestAverage = Math.min(value/weather[i].length, lowestAverage);
+  }
+  return lowestAverage;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -151,7 +196,12 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let groupedString = str.split('\n');
+  return groupedString.reduce((result, string) => {
+    let spl = string.split(',');
+    result.push(spl.reduce((sum, val) => sum + parseInt(val), 0));
+    return result;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -194,63 +244,63 @@ describe('Testing challenge 2', () => {
 });
 
 
-// describe('Testing challenge 3', () => {
-//   test('It should return the number 24', () => {
-//     expect(howManyTreats(errands)).toStrictEqual(24);
-//   });
-// });
+describe('Testing challenge 3', () => {
+  test('It should return the number 24', () => {
+    expect(howManyTreats(errands)).toStrictEqual(24);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   const battleshipData = [
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', ' ', ' '],
-//     [' ', ' ', '#', '#'],
-//   ];
+describe('Testing challenge 4', () => {
+  const battleshipData = [
+    ['#', ' ', '#', ' '],
+    ['#', ' ', '#', ' '],
+    ['#', ' ', ' ', ' '],
+    [' ', ' ', '#', '#'],
+  ];
 
-//   test('It should return "hit" when it hits a boat', () => {
-//     expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
-//     expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
-//   });
+  test('It should return "hit" when it hits a boat', () => {
+    expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
+    expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
+  });
 
-//   test('It should return "miss" when it doesn\'t hit a boat', () => {
-//     expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
-//     expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
-//   });
-// });
+  test('It should return "miss" when it doesn\'t hit a boat', () => {
+    expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
+    expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
+  });
+});
 
-// describe('Testing challenge 5', () => {
-//   test('It should multiply all the numbers together', () => {
-//     expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
-//   });
+describe('Testing challenge 5', () => {
+  test('It should multiply all the numbers together', () => {
+    expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+  });
 
-//   test('It should return zero if there are any zeroes in the data', () => {
-//     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
-//   });
-//   test('It should work even if some of the arrays contain no numbers', () => {
-//     expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
-//   });
-// });
+  test('It should return zero if there are any zeroes in the data', () => {
+    expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
+  });
+  test('It should work even if some of the arrays contain no numbers', () => {
+    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should calculate and return the average temperature of the data set', () => {
-//     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should calculate and return the average temperature of the data set', () => {
+    expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
+  });
+});
 
-// describe('Testing challenge 7', () => {
-//   test('It should return the lowest weekly average temperature within the data set', () => {
-//     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
-//     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should return the lowest weekly average temperature within the data set', () => {
+    expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
+    expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
+  });
+});
 
-// describe('Testing challenge 8', () => {
-//   test('It should return the total count for each row', () => {
-//     let result = excel('1,1,1\n4,4,4\n9,9,9');
-//     expect(result.length).toStrictEqual(3);
-//     expect(result[0]).toStrictEqual(3);
-//     expect(result[1]).toStrictEqual(12);
-//     expect(result[2]).toStrictEqual(27);
-//   });
-// });
+describe('Testing challenge 8', () => {
+  test('It should return the total count for each row', () => {
+    let result = excel('1,1,1\n4,4,4\n9,9,9');
+    expect(result.length).toStrictEqual(3);
+    expect(result[0]).toStrictEqual(3);
+    expect(result[1]).toStrictEqual(12);
+    expect(result[2]).toStrictEqual(27);
+  });
+});
