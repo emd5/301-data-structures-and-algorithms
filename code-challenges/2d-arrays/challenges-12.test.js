@@ -198,8 +198,8 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 const excel = (str) => {
   let groupedString = str.split('\n');
   return groupedString.reduce((result, string) => {
-    let spl = string.split(',');
-    result.push(spl.reduce((sum, val) => sum + parseInt(val), 0));
+    let splitComma = string.split(',');
+    result.push(splitComma.reduce((sum, val) => sum + parseInt(val), 0));
     return result;
   }, []);
 };
