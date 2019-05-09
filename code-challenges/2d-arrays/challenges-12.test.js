@@ -202,6 +202,21 @@ const excel = (str) => {
     result.push(splitComma.reduce((sum, val) => sum + parseInt(val), 0));
     return result;
   }, []);
+
+  // const sums = [];
+
+  // const rows = str.split('\n');
+
+  // rows.forEach(row=> {
+  //   let sum =0;
+  //   const cols = row.split(',');
+  //   cols.forEach(col => {
+  //     const num = parseInt(col);
+  //     sum = sum +num;
+
+  //   });
+  //   sums.push(sum);
+  // });
 };
 
 /* ------------------------------------------------------------------------------------------------
