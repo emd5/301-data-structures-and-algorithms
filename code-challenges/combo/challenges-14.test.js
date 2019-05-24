@@ -124,6 +124,7 @@ https:/missingslash.org returns false because the URL is malformed
 const isSecure = (url) => {
   const reg = /^^(https):\/\//;
   return reg.test(url);
+  // url.startsWith('https://');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,6 +147,22 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
+  const possibleWins = [
+    [[0,0], [0,1], [0,2]],
+    [[1,0], [1,1], [1,2]],
+    [[2,0], [2,1], [2,2]],
+    [[0,0], [1,0], [2,0]],
+    [[0,1], [1,1], [2,1]],
+    [[0,2], [1,2], [2,2]],
+    [[0,0], [1,1], [2,2]],
+    [[0,2], [1,1], [2,0]]
+  ]
+
+  possibleWins.some(win => 
+    board[win[0][0]][win[0][1]] !== '' &&
+    board[win[0][0]][win[0][1]] === board[win[1][0]][win[1][1]] &&
+    board[win[0][0]][win[0][1]] === board[win[2][0]][win[2][1]]
+  );
   
 };
 
@@ -202,7 +219,7 @@ describe('Testing challenge 3', () => {
       {name: 'Sweatshirt', price: 45},
       {name: 'Tote bag', price: 15},
     ]);
-  });
+
 });
 
 describe('Testing challenge 4', () => {
