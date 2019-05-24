@@ -1,6 +1,15 @@
 import java.util.Arrays;
 
+/**
+ * The type Array reverse.
+ */
 public class ArrayReverse {
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main (String[] args) {
         // create the array to test your code on later
         int[] startArr = new int[] {1,2,3,4,5,10};
@@ -12,7 +21,13 @@ public class ArrayReverse {
         System.out.println(Arrays.toString(endArr));
     }
 
-    // the method you should write, to reverse an array
+
+    /**
+     * Reverse array int [ ].
+     *
+     * @param inputArray the input array
+     * @return the int [ ]
+     */
     public static int[] reverseArray(int[] inputArray) {
 
         // when array is empty or has less than one index in array
@@ -27,6 +42,7 @@ public class ArrayReverse {
         }
 
         System.out.println("New Array is:");
+
         return inputArray;
     }
 
